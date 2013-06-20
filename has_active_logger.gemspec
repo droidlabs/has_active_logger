@@ -14,8 +14,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*"] + ["LICENSE.txt", "Rakefile", "README.md"]
   spec.test_files = Dir["spec/**/*"]
 
-  spec.add_dependency "yell"
-  spec.add_dependency "json"
+  spec.add_dependency "yell", '~> 1.3.0'
+  spec.add_dependency "json", '~> 1.7.7'
   spec.add_dependency "activesupport"
 
   spec.add_development_dependency "rspec"
