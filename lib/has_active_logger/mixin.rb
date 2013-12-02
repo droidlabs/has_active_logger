@@ -8,18 +8,13 @@ module HasActiveLogger
   module Mixin
     extend ActiveSupport::Concern
 
-    silence_warnings do
-      Yell::Formatter::PatternRegexp = /([^%]*)(%\d*)?(#{Yell::Formatter::PatternTable.keys.join('|')})?(.*)/m
-    end
-
     included do
       class << self
         def logger
           @logger ||= Yell.new do |l|
             l.adapter :datefile, log_file,
               level: (:debug..:fatal),
-              format: Yell.format( "%d [%5L] #%M at %F:%n\n%m\n\n", "%H:%M:%S" ),
-              date_pattern: "%Y-week-%V",
+              format: Yell.format( "%d [%L] #%M at %F:%n\n%m\n\n", "%H:%M:%S" ),
               symlink_original_filename: true,
               keep: 4
           end

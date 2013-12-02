@@ -4,7 +4,7 @@ module HasActiveLogger
   describe HasActiveLogger::Mixin do
     include HasActiveLogger::Mixin
 
-    before { self.class.stub!(:rails_log_path).and_return('./log') }
+    before { self.class.stub(:rails_log_path).and_return('./log') }
 
     describe '#logger' do
       it { logger.should be_kind_of(Yell::Logger) }
@@ -30,7 +30,7 @@ module HasActiveLogger
       end
 
       context 'when some object' do
-        let(:message) { mock }
+        let(:message) { double }
         it 'should inspect object' do
           message.should_receive(:inspect)
           format_message(message)
