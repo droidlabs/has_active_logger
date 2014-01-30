@@ -15,7 +15,7 @@ module HasActiveLogger
             l.adapter :datefile, log_file,
               level: (:debug..:fatal),
               format: Yell.format( "%d [%L] #%M at %F:%n\n%m\n\n", "%H:%M:%S" ),
-              symlink_original_filename: true,
+              # symlink_original_filename: true,
               keep: 4
           end
         end
